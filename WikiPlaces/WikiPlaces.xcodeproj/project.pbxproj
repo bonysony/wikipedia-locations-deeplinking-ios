@@ -14,6 +14,7 @@
 		F1890B8F2C42A8F1005DBBA3 /* WikiPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890B8E2C42A8F1005DBBA3 /* WikiPlacesTests.swift */; };
 		F1890B992C42A8F1005DBBA3 /* WikiPlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890B982C42A8F1005DBBA3 /* WikiPlacesUITests.swift */; };
 		F1890B9B2C42A8F1005DBBA3 /* WikiPlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890B9A2C42A8F1005DBBA3 /* WikiPlacesUITestsLaunchTests.swift */; };
+		F1890BA82C42AA1E005DBBA3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BA72C42AA1E005DBBA3 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		F1890B942C42A8F1005DBBA3 /* WikiPlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiPlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1890B982C42A8F1005DBBA3 /* WikiPlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPlacesUITests.swift; sourceTree = "<group>"; };
 		F1890B9A2C42A8F1005DBBA3 /* WikiPlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F1890BA72C42AA1E005DBBA3 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		F1890B7B2C42A8EE005DBBA3 /* WikiPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				F1890BA92C42AA22005DBBA3 /* Models */,
 				F1890B7C2C42A8EE005DBBA3 /* WikiPlacesApp.swift */,
 				F1890B7E2C42A8EE005DBBA3 /* ContentView.swift */,
 				F1890B802C42A8F1005DBBA3 /* Assets.xcassets */,
@@ -127,6 +130,14 @@
 				F1890B9A2C42A8F1005DBBA3 /* WikiPlacesUITestsLaunchTests.swift */,
 			);
 			path = WikiPlacesUITests;
+			sourceTree = "<group>";
+		};
+		F1890BA92C42AA22005DBBA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1890BA72C42AA1E005DBBA3 /* Location.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1890B7F2C42A8EE005DBBA3 /* ContentView.swift in Sources */,
+				F1890BA82C42AA1E005DBBA3 /* Location.swift in Sources */,
 				F1890B7D2C42A8EE005DBBA3 /* WikiPlacesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
