@@ -7,13 +7,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = LocationViewModel()
+    @StateObject var viewModel: LocationViewModel
+    @EnvironmentObject var coordinator: AppCoordinator
 
     var body: some View {
         NavigationView {
             List(viewModel.locations) { location in
                 Button(action: {
-                    viewModel.openLocation(location)
+                    coordinator.openLocation(location)
                 }) {
                     HStack {
                         Text(location.displayName)

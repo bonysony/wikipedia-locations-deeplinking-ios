@@ -9,13 +9,23 @@ import SwiftUI
 
 @main
 struct WikiPlacesApp: App {
+    @StateObject private var viewModel: LocationViewModel
+    private var coordinator: AppCoordinator
+
+    init() {
+        let service = LocationService()
+        let useCase = FetchLocationsUseCase(locationService: service)
+        let coordinator = AppCoordinator()
+        let viewModel = LocationViewModel(locationUseCase: useCase)
+        
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.coordinator = coordinator
+    }
+
     var body: some Scene {
         WindowGroup {
-            let service = LocationService()
-            let useCase = FetchLocationsUseCase(locationService: service)
-            let coordinator = AppCoordinator()
-            let viewModel = LocationViewModel(locationUseCase: useCase, coordinator: coordinator)
             ContentView(viewModel: viewModel)
+                .environmentObject(coordinator)
         }
     }
 }

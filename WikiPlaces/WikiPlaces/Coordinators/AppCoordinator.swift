@@ -12,7 +12,7 @@ protocol Coordinator {
     func openLocation(_ location: Location)
 }
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: Coordinator, ObservableObject {
     func openLocation(_ location: Location) {
         let urlString = "wikipedia://places?lat=\(location.lat)&lon=\(location.long)"
         
