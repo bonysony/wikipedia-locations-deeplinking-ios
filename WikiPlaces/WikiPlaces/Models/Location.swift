@@ -7,8 +7,21 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Identifiable, Codable {
     let name: String?
     let lat: Double
     let long: Double
+    
+    var id: UUID {
+        return UUID()
+    }
+    
+    // Computed property to provide a default name
+    var displayName: String {
+        return name ?? "Custom Location"
+    }
+}
+
+struct LocationResponse: Codable {
+    let locations: [Location]
 }
