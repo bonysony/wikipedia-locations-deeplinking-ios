@@ -2158,4 +2158,17 @@ static NSString *const WMFDidShowOnboarding = @"DidShowOnboarding5.3";
     });
 }
 
+- (void)showPlacesTabWithCoordinates:(NSString *)latitude longitude:(NSString *)longitude {
+    [self setSelectedIndex:WMFAppTabTypePlaces];
+    
+    NSNumber *latitudeNumber = @([latitude doubleValue]);
+    NSNumber *longitudeNumber = @([longitude doubleValue]);
+    
+    UINavigationController *navController = (UINavigationController *)self.selectedViewController;
+    if ([navController.topViewController isKindOfClass:[WMFPlacesViewController class]]) {
+        WMFPlacesViewController *placesVC = (WMFPlacesViewController *)navController.topViewController;
+        [placesVC updateMapWithCustomCoordinates:latitudeNumber longitude:longitudeNumber];
+    }
+}
+
 @end

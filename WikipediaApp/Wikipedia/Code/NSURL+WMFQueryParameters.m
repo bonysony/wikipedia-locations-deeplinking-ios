@@ -38,4 +38,15 @@
     return components.URL;
 }
 
+- (NSDictionary<NSString *, NSString *> *)wmf_parseQueryString {
+    NSMutableDictionary<NSString *, NSString *> *queryParams = [NSMutableDictionary dictionary];
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
+    for (NSURLQueryItem *item in components.queryItems) {
+        if (item.name && item.value) {
+            queryParams[item.name] = item.value;
+        }
+    }
+    return [queryParams copy];
+}
+
 @end

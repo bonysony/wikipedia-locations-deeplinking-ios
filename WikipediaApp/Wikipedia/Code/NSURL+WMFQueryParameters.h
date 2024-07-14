@@ -23,6 +23,17 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 - (NSURL *)wmf_urlWithValue:(NSString *)value forQueryKey:(NSString *)key;
 
+/**
+ * Parses the query string of a URL into a dictionary of key-value pairs.
+ *
+ * @return A dictionary containing the key-value pairs from the URL's query string.
+ *         For example, for the URL http://www.wikipedia.org?somekey=somevalue&anotherkey=anothervalue,
+ *         the dictionary would contain the entries {"somekey": "somevalue", "anotherkey": "anothervalue"}.
+ *         Returns an empty dictionary if the query string is empty or nil.
+ */
+
+- (NSDictionary<NSString *, NSString *> *)wmf_parseQueryString;
+
 @end
 
 NS_ASSUME_NONNULL_END

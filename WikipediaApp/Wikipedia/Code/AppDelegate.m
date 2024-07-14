@@ -4,6 +4,7 @@
 @import WMF.NSUserActivity_WMFExtensions;
 @import WMF.NSFileManager_WMFGroup;
 #import "WMFAppViewController.h"
+#import "NSURL+WMFQueryParameters.h"
 #import "UIApplicationShortcutItem+WMFShortcutItem.h"
 #import "Wikipedia-Swift.h"
 #import "WMFQuoteMacros.h"
@@ -160,6 +161,7 @@ static NSString *const WMFBackgroundDatabaseHousekeeperTaskIdentifier = @"org.wi
             openURL:(NSURL *)url
             options:(NSDictionary<NSString *, id> *)options {
     NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url] ?: [NSUserActivity wmf_activityForURL:url];
+    
     if (activity) {
         [self.appViewController showSplashView];
         BOOL result = [self.appViewController processUserActivity:activity
@@ -173,6 +175,17 @@ static NSString *const WMFBackgroundDatabaseHousekeeperTaskIdentifier = @"org.wi
                                                        }];
         return result;
     } else {
+        // Custom handling for Places tab with coordinates
+        if ([url.scheme isEqualToString:@"wikipedia"] || [url.scheme isEqualToString:@"wikipedia-official"]) {
+            NSDictionary<NSString *, NSString *> *queryParams = [url wmf_parseQueryString];
+            NSString *latitude = queryParams[@"lat"];
+            NSString *longitude = queryParams[@"lon"];
+            
+            if (latitude && longitude) {
+                [self.appViewController showPlacesTabWithCoordinates:latitude longitude:longitude];
+                return YES;
+            }
+        }
         [self resumeAppIfNecessary];
         return NO;
     }
