@@ -17,7 +17,19 @@ class LocationService: LocationServiceProtocol {
         }
 
         let (data, _) = try await URLSession.shared.data(from: url)
-        let locations = try JSONDecoder().decode([Location].self, from: data)
-        return locations
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("JSON Data: \(jsonString)")
+        }
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            let locationResponse = try decoder.decode(LocationResponse.self, from: data)
+            return locationResponse.locations
+        } catch {
+            print("Decoding error: \(error)")
+            throw error
+        }
     }
 }
