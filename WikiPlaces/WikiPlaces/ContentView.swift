@@ -4,21 +4,36 @@
 //
 //  Created by Melina Ariyani on 13/07/2024.
 //
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @StateObject var viewModel = LocationViewModel()
 
-#Preview {
-    ContentView()
+    var body: some View {
+        NavigationView {
+            List(viewModel.locations) { location in
+                Button(action: {
+                    viewModel.openLocation(location)
+                }) {
+                    HStack {
+                        Text(location.displayName)
+                        Spacer()
+                        Image(systemName: "chevron.compact.right")
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            .navigationTitle("Locations")
+            .onAppear {
+                viewModel.fetchLocations()
+            }
+            .alert(isPresented: .constant(viewModel.error != nil)) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(viewModel.error ?? "Unknown error"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+        }
+    }
 }
