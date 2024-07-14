@@ -7,19 +7,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel: LocationViewModel
-    @EnvironmentObject var coordinator: AppCoordinator
+    @ObservedObject var viewModel: LocationViewModel
 
     var body: some View {
         NavigationView {
             List(viewModel.locations) { location in
                 Button(action: {
-                    coordinator.openLocation(location)
+                    viewModel.openLocation(location)
                 }) {
                     HStack {
-                        Text(location.displayName)
+                        VStack(alignment: .leading) {
+                            Text(location.displayName)
+                            Text("Lat: \(location.lat), Long: \(location.long)")
+                        }
                         Spacer()
-                        Image(systemName: "chevron.compact.right")
+                        Image(systemName: "chevron.right")
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -37,4 +39,8 @@ struct ContentView: View {
             }
         }
     }
+}
+
+#Preview {
+    ContentView(viewModel: LocationViewModel())
 }

@@ -13,9 +13,12 @@ class LocationViewModel: ObservableObject {
     @Published var error: String?
 
     private let locationUseCase: LocationUseCaseProtocol
+    private let coordinator: Coordinator
 
-    init(locationUseCase: LocationUseCaseProtocol = FetchLocationsUseCase(locationService: LocationService())) {
+    init(locationUseCase: LocationUseCaseProtocol = FetchLocationsUseCase(locationService: LocationService()),
+         coordinator: Coordinator = AppCoordinator()) {
         self.locationUseCase = locationUseCase
+        self.coordinator = coordinator
         fetchLocations()
     }
 
@@ -28,5 +31,9 @@ class LocationViewModel: ObservableObject {
                 self.error = error.localizedDescription
             }
         }
+    }
+
+    func openLocation(_ location: Location) {
+        coordinator.openLocation(location)
     }
 }
