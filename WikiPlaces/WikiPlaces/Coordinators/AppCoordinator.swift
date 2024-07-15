@@ -9,21 +9,50 @@ import Foundation
 import SwiftUI
 
 protocol Coordinator {
-    func openLocation(_ location: Location)
+    func openURL(_ url: URL) async throws
+    func createURL(from location: Location) -> URL?
+}
+
+enum CoordinatorError: Error {
+    case cannotOpenURL
+    case unsupportedURLScheme
+
+    var description: String {
+        switch self {
+        case .cannotOpenURL:
+            return "Failed to open URL. Please check the format."
+        case .unsupportedURLScheme:
+            return "This URL scheme is not supported. Please check if the Wikipedia app is installed."
+        }
+    }
 }
 
 class AppCoordinator: Coordinator, ObservableObject {
-    func openLocation(_ location: Location) {
-        let urlString = "wikipedia://places?lat=\(location.lat)&lon=\(location.long)"
-        
-        if let url = URL(string: urlString) {
-            print("urlString: \(url.absoluteString)")
-            
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                print("Cannot open URL")
-            }
+    
+    @MainActor
+    func openURL(_ url: URL) async throws {
+        print("Attempting to open URL: \(url.absoluteString)")
+    
+        if UIApplication.shared.canOpenURL(url) {
+            await UIApplication.shared.open(url)
+        } else {
+            throw CoordinatorError.unsupportedURLScheme
         }
     }
+
+    func createURL(from location: Location) -> URL? {
+        let urlString = "wikipedia://places?lat=\(location.lat)&lon=\(location.long)"
+        return URL(string: urlString)
+    }
+}
+
+struct MockCoordinator: Coordinator {
+    func openURL(_ url: URL) async throws {
+        
+    }
+    
+    func createURL(from location: Location) -> URL? {
+        return nil
+    }
+    
 }
