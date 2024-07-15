@@ -2221,21 +2221,12 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
         listViewController.apply(theme: theme)
     }
     
-    @objc func updateMapWithCustomCoordinates(_ latitude: NSNumber, longitude: NSNumber) {
+    @objc public func updateMapWithCustomCoordinates(latitude: NSString, longitude: NSString) {
         let lat = latitude.doubleValue
         let lon = longitude.doubleValue
 
-        let location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
-
-        mapView.setRegion(region, animated: true)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        
-        mapView.removeAnnotations(mapView.annotations)
-        
-        mapView.addAnnotation(annotation)
+        let location = CLLocation(latitude: lat, longitude: lon)
+        zoomAndPanMapView(toLocation: location)
     }
 }
 

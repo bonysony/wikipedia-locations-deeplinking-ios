@@ -1175,6 +1175,13 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             [self dismissPresentedViewControllers];
             [self setSelectedIndex:WMFAppTabTypePlaces];
             [self.navigationController popToRootViewControllerAnimated:animated];
+            
+            NSString *lat = activity.userInfo[@"lat"];
+            NSString *lon = activity.userInfo[@"lon"];
+            if (lat && lon) {
+                [[self placesViewController] updateMapWithCustomCoordinatesWithLatitude:lat longitude:lon];
+            }
+            
             NSURL *articleURL = activity.wmf_linkURL;
             if (articleURL) {
                 // For "View on a map" action to succeed, view mode has to be set to map.
@@ -2156,19 +2163,6 @@ static NSString *const WMFDidShowOnboarding = @"DidShowOnboarding5.3";
                                    [authenticationManager userDidAcknowledgeUnintentionalLogout];
                                }];
     });
-}
-
-- (void)showPlacesTabWithCoordinates:(NSString *)latitude longitude:(NSString *)longitude {
-    [self setSelectedIndex:WMFAppTabTypePlaces];
-    
-    NSNumber *latitudeNumber = @([latitude doubleValue]);
-    NSNumber *longitudeNumber = @([longitude doubleValue]);
-    
-    UINavigationController *navController = (UINavigationController *)self.selectedViewController;
-    if ([navController.topViewController isKindOfClass:[WMFPlacesViewController class]]) {
-        WMFPlacesViewController *placesVC = (WMFPlacesViewController *)navController.topViewController;
-        [placesVC updateMapWithCustomCoordinates:latitudeNumber longitude:longitudeNumber];
-    }
 }
 
 @end

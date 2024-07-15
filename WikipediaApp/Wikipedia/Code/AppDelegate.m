@@ -175,17 +175,6 @@ static NSString *const WMFBackgroundDatabaseHousekeeperTaskIdentifier = @"org.wi
                                                        }];
         return result;
     } else {
-        // Custom handling for Places tab with coordinates
-        if ([url.scheme isEqualToString:@"wikipedia"] || [url.scheme isEqualToString:@"wikipedia-official"]) {
-            NSDictionary<NSString *, NSString *> *queryParams = [url wmf_parseQueryString];
-            NSString *latitude = queryParams[@"lat"];
-            NSString *longitude = queryParams[@"lon"];
-            
-            if (latitude && longitude) {
-                [self.appViewController showPlacesTabWithCoordinates:latitude longitude:longitude];
-                return YES;
-            }
-        }
         [self resumeAppIfNecessary];
         return NO;
     }
