@@ -49,7 +49,6 @@ class LocationViewModel: ObservableObject {
         locations.append(newLocation)
     }
 
-
     func openLocation(_ location: Location) async {
         do {
             if let url = coordinator.createURL(from: location) {
