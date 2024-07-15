@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: LocationViewModel
+    @State private var showAddLocationSheet = false
 
     var body: some View {
         NavigationView {
@@ -18,7 +19,13 @@ struct ContentView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(location.displayName)
-                            Text("Lat: \(location.lat), Long: \(location.long)")
+                                .bold()
+                            HStack {
+                                Text("Lat:").bold()
+                                Text("\(location.lat)")
+                                Text("Long:").bold()
+                                Text("\(location.long)")
+                            }
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
@@ -27,6 +34,18 @@ struct ContentView: View {
                 .buttonStyle(PlainButtonStyle())
             }
             .navigationTitle("Locations")
+            .navigationBarItems(trailing: HStack {
+                Button(action: {
+                    showAddLocationSheet = true
+                }) {
+                    Image(systemName: "plus")
+                }
+                Button(action: {
+                    viewModel.fetchLocations()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                }
+            })
             .onAppear {
                 viewModel.fetchLocations()
             }
@@ -37,6 +56,10 @@ struct ContentView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
+            .background(Color(UIColor.systemGray6))
+        }
+        .sheet(isPresented: $showAddLocationSheet) {
+            AddLocationView(viewModel: viewModel)
         }
     }
 }
