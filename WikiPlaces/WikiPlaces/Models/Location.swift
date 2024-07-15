@@ -18,7 +18,13 @@ struct Location: Identifiable, Codable {
     
     // Computed property to provide a default name
     var displayName: String {
-        return name ?? "Custom Location"
+        return name ?? "Unnamed Location"
+    }
+    
+    var isCustom: Bool = false
+    
+    private enum CodingKeys : String, CodingKey {
+        case name, lat, long
     }
 }
 
