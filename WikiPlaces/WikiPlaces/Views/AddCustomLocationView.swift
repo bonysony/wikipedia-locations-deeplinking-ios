@@ -67,11 +67,11 @@ struct AddCustomLocationView: View {
         }
 
         let newLocation = Location(name: name, lat: latitude, long: longitude)
-        viewModel.addLocation(newLocation)
+        viewModel.addCustomLocation(location: newLocation)
         presentationMode.wrappedValue.dismiss()
     }
 }
 
-#Preview {
-    ContentView(viewModel: LocationViewModel())
-}
+//#Preview {
+//    ContentView(viewModel: LocationViewModel())
+//}
