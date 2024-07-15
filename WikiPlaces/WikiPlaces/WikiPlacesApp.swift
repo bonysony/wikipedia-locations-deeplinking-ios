@@ -12,9 +12,8 @@ struct WikiPlacesApp: App {
     var body: some Scene {
         WindowGroup {
             let service = LocationService()
-            let useCase = FetchLocationsUseCase(locationService: service)
             let coordinator = AppCoordinator()
-            let viewModel = LocationViewModel(locationUseCase: useCase, coordinator: coordinator)
+            let viewModel = LocationViewModel(locationService: service, coordinator: coordinator)
             ContentView(viewModel: viewModel)
         }
     }
