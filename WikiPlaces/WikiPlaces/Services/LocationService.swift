@@ -33,3 +33,9 @@ class LocationService: LocationServiceProtocol {
         }
     }
 }
+
+struct MockLocationService: LocationServiceProtocol {
+    func fetchLocations() async throws -> [Location] {
+        return [Location(name: "Poo", lat: 57.282828, long: 24.3423423)]
+    }
+}
