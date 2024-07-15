@@ -17,9 +17,10 @@
 		F1890BA82C42AA1E005DBBA3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BA72C42AA1E005DBBA3 /* Location.swift */; };
 		F1890BAC2C42BFA2005DBBA3 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BAB2C42BFA2005DBBA3 /* LocationViewModel.swift */; };
 		F1890BAE2C42C0CC005DBBA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BAD2C42C0CC005DBBA3 /* LocationService.swift */; };
-		F1890BB22C42C275005DBBA3 /* FetchLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BB12C42C275005DBBA3 /* FetchLocationsUseCase.swift */; };
 		F1890BB52C42C2DC005DBBA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BB42C42C2DC005DBBA3 /* AppCoordinator.swift */; };
 		F1890BB92C446060005DBBA3 /* AddCustomLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BB82C446060005DBBA3 /* AddCustomLocationView.swift */; };
+		F1890BBC2C457C08005DBBA3 /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BBB2C457C08005DBBA3 /* LocationsListView.swift */; };
+		F1890BBE2C457CCD005DBBA3 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890BBD2C457CCD005DBBA3 /* ErrorStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +55,11 @@
 		F1890BA72C42AA1E005DBBA3 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F1890BAB2C42BFA2005DBBA3 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		F1890BAD2C42C0CC005DBBA3 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		F1890BB12C42C275005DBBA3 /* FetchLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationsUseCase.swift; sourceTree = "<group>"; };
 		F1890BB42C42C2DC005DBBA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F1890BB62C43E7C3005DBBA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F1890BB82C446060005DBBA3 /* AddCustomLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomLocationView.swift; sourceTree = "<group>"; };
+		F1890BBB2C457C08005DBBA3 /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
+		F1890BBD2C457CCD005DBBA3 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,6 @@
 				F1890BB62C43E7C3005DBBA3 /* Info.plist */,
 				F1890BB72C44603F005DBBA3 /* Views */,
 				F1890BB32C42C2C8005DBBA3 /* Coordinators */,
-				F1890BB02C42C25F005DBBA3 /* UseCases */,
 				F1890BAF2C42C0D6005DBBA3 /* Services */,
 				F1890BAA2C42ADD0005DBBA3 /* ViewModels */,
 				F1890BA92C42AA22005DBBA3 /* Models */,
@@ -172,14 +173,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		F1890BB02C42C25F005DBBA3 /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				F1890BB12C42C275005DBBA3 /* FetchLocationsUseCase.swift */,
-			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
 		F1890BB32C42C2C8005DBBA3 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +186,8 @@
 			children = (
 				F1890B7E2C42A8EE005DBBA3 /* ContentView.swift */,
 				F1890BB82C446060005DBBA3 /* AddCustomLocationView.swift */,
+				F1890BBB2C457C08005DBBA3 /* LocationsListView.swift */,
+				F1890BBD2C457CCD005DBBA3 /* ErrorStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,11 +325,12 @@
 				F1890B7F2C42A8EE005DBBA3 /* ContentView.swift in Sources */,
 				F1890BA82C42AA1E005DBBA3 /* Location.swift in Sources */,
 				F1890BAE2C42C0CC005DBBA3 /* LocationService.swift in Sources */,
+				F1890BBC2C457C08005DBBA3 /* LocationsListView.swift in Sources */,
 				F1890B7D2C42A8EE005DBBA3 /* WikiPlacesApp.swift in Sources */,
 				F1890BAC2C42BFA2005DBBA3 /* LocationViewModel.swift in Sources */,
-				F1890BB22C42C275005DBBA3 /* FetchLocationsUseCase.swift in Sources */,
 				F1890BB92C446060005DBBA3 /* AddCustomLocationView.swift in Sources */,
 				F1890BB52C42C2DC005DBBA3 /* AppCoordinator.swift in Sources */,
+				F1890BBE2C457CCD005DBBA3 /* ErrorStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
