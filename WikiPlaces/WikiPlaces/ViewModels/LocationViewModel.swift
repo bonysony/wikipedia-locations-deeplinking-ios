@@ -56,7 +56,25 @@ class LocationViewModel: ObservableObject {
             self.error = WPError.CoordinatorError.cannotOpenURL
             viewStatus = .error
         }
-        
-        
+    }
+
+    func validateLatitude(_ lat: String) throws -> Double {
+        guard let latitude = Double(lat) else {
+            throw WPError.ValidationError.invalidNumbers
+        }
+        guard latitude >= -90 && latitude <= 90 else {
+            throw WPError.ValidationError.latitudeOutOfBounds
+        }
+        return latitude
+    }
+
+    func validateLongitude(_ long: String) throws -> Double {
+        guard let longitude = Double(long) else {
+            throw WPError.ValidationError.invalidNumbers
+        }
+        guard longitude >= -180 && longitude <= 180 else {
+            throw WPError.ValidationError.longitudeOutOfBounds
+        }
+        return longitude
     }
 }

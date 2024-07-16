@@ -48,30 +48,22 @@ struct AddCustomLocationView: View {
     }
 
     private func addLocation() {
-        guard let latitude = Double(lat), let longitude = Double(long) else {
-            alertMessage = "Please enter valid numbers for latitude and longitude."
+        do {
+            let latitude = try viewModel.validateLatitude(lat)
+            let longitude = try viewModel.validateLongitude(long)
+            let newLocation = Location(name: name, lat: latitude, long: longitude)
+            viewModel.addCustomLocation(location: newLocation)
+            presentationMode.wrappedValue.dismiss()
+        } catch let error as WPError.ValidationError {
+            alertMessage = error.errorDescription
             showAlert = true
-            return
-        }
-
-        guard latitude >= -90 && latitude <= 90 else {
-            alertMessage = "Latitude must be between -90 and 90 degrees."
+        } catch {
+            alertMessage = "An unexpected error occurred."
             showAlert = true
-            return
         }
-
-        guard longitude >= -180 && longitude <= 180 else {
-            alertMessage = "Longitude must be between -180 and 180 degrees."
-            showAlert = true
-            return
-        }
-
-        let newLocation = Location(name: name, lat: latitude, long: longitude)
-        viewModel.addCustomLocation(location: newLocation)
-        presentationMode.wrappedValue.dismiss()
     }
 }
 
-//#Preview {
-//    ContentView(viewModel: LocationViewModel())
-//}
+#Preview {
+    ContentView(viewModel: LocationViewModel(locationService: MockLocationService(), coordinator: MockCoordinator()))
+}
