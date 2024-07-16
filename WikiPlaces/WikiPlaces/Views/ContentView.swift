@@ -20,10 +20,11 @@ struct ContentView: View {
             case .error:
                 ErrorStateView(error: WPError.NetworkError.unreachable, retryAction: {
                     Task {
-                        await viewModel.fetchLocations()
+                        await viewModel.loadLocations()
                     }
                 })
             }
         }
+        .task{await viewModel.loadLocations()}
     }
 }

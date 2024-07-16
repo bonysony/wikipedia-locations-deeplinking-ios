@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location: Identifiable, Codable {
+struct Location: Identifiable, Codable, Equatable {
     let name: String?
     let lat: Double
     let long: Double
@@ -16,7 +16,6 @@ struct Location: Identifiable, Codable {
         return UUID()
     }
     
-    // Computed property to provide a default name
     var displayName: String {
         return name ?? "Unnamed Location"
     }

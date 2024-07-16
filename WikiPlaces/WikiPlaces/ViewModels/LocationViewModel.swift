@@ -14,7 +14,6 @@ enum ViewStatus {
     case error
 }
 
-@MainActor
 class LocationViewModel: ObservableObject {
     @Published var locations: [Location] = []
     @Published var viewStatus: ViewStatus = .initialised
@@ -26,12 +25,10 @@ class LocationViewModel: ObservableObject {
     init(locationService: LocationServiceProtocol, coordinator: Coordinator) {
         self.locationService = locationService
         self.coordinator = coordinator
-        Task {
-            await fetchLocations()
-        }
     }
 
-    func fetchLocations() async {
+    @MainActor
+    func loadLocations() async {
         viewStatus = .loading
         do {
             let fetchedLocations = try await locationService.fetchLocations()
@@ -43,6 +40,7 @@ class LocationViewModel: ObservableObject {
         }
     }
 
+    @MainActor
     func addCustomLocation(location: Location) {
         var newLocation = location
         newLocation.isCustom = true
