@@ -39,7 +39,7 @@ struct ErrorStateView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
         .ignoresSafeArea()
     }
 }
