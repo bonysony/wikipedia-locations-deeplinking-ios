@@ -21,28 +21,28 @@ struct AddCustomLocationView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Location Name", text: $name)
-                    TextField("Latitude coordinate", text: $lat)
+                    TextField(NSLocalizedString("locations-add.form.name", comment: ""), text: $name)
+                    TextField(NSLocalizedString("locations-add.form.latitude", comment: ""), text: $lat)
                         .keyboardType(.decimalPad)
                         .onChange(of: lat) {
                             lat = lat.filter { "0123456789.-".contains($0) }
                         }
-                    TextField("Longitude coordinate", text: $long)
+                    TextField(NSLocalizedString("locations-add.form.longitude", comment: ""), text: $long)
                         .keyboardType(.decimalPad)
                         .onChange(of: long) {
                             long = long.filter { "0123456789.-".contains($0) }
                         }
                 }
                 Button(action: addLocation) {
-                    Text("Add location")
+                    Text(NSLocalizedString("locations-add.form.add_location_button", comment: ""))
                 }
             }
-            .navigationTitle("Add a location")
-            .navigationBarItems(leading: Button("Cancel") {
+            .navigationTitle(NSLocalizedString("locations-add.navigation_title", comment: ""))
+            .navigationBarItems(leading: Button(NSLocalizedString("locations-add.navigation_cancel_button", comment: "")) {
                 presentationMode.wrappedValue.dismiss()
             })
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                Alert(title: Text(NSLocalizedString("locations-add.alert.invalid_input.title", comment: "")), message: Text(alertMessage), dismissButton: .default(Text(NSLocalizedString("locations-add.alert.ok_button", comment: ""))))
             }
         }
     }
@@ -58,7 +58,7 @@ struct AddCustomLocationView: View {
             alertMessage = error.errorDescription
             showAlert = true
         } catch {
-            alertMessage = "An unexpected error occurred."
+            alertMessage = NSLocalizedString("locations-add.alert.unexpected_error.message", comment: "")
             showAlert = true
         }
     }

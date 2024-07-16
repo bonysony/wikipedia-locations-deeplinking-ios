@@ -28,7 +28,7 @@ struct ErrorStateView: View {
                 .padding()
 
             Button(action: retryAction) {
-                Text("Try again")
+                Text(NSLocalizedString("error-state.try_again_button", comment: ""))
                     .font(.title3)
                     .foregroundColor(.white)
                     .padding()

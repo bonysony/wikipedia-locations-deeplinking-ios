@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  WikiPlaces
+
+  Created by Melina Ariyani on 16/07/2024.
+  
+*/
+
+"loading-state.message" = "Loading...";
+
+"locations-add.form.name" = "Location Name";
+"locations-add.form.latitude" = "Latitude coordinate";
+"locations-add.form.longitude" = "Longitude coordinate";
+"locations-add.form.add_location_button" = "Add location";
+"locations-add.navigation_title" = "Add a location";
+"locations-add.navigation_cancel_button" = "Cancel";
+"locations-add.alert.invalid_input.title" = "Invalid Input";
+"locations-add.alert.unexpected_error.message" = "An unexpected error occurred.";
+"locations-add.alert.ok_button" = "OK";
+
+"locations-list.navigation_title" = "Wiki Places";
+"locations-list.latitude_label" = "Lat:";
+"locations-list.longitude_label" = "Long:";
+"locations-list.error_title" = "Error";
+"locations-list.unknown_error" = "Unknown error";
+"locations-list.ok_button" = "OK";
+
+"error-state.try_again_button" = "Try again";
+
+"error.validation.invalid_numbers" = "Please enter valid numbers for latitude and longitude.";
+"error.validation.latitude_out_of_bounds" = "Latitude must be between -90 and 90 degrees.";
+"error.validation.longitude_out_of_bounds" = "Longitude must be between -180 and 180 degrees.";
+"error.coordinator.cannot_open_url" = "Failed to open URL. Please check the format.";
+"error.coordinator.unsupported_url_scheme" = "This URL scheme is not supported. Please check if the Wikipedia app is installed.";
+"error.location_service.invalid_url" = "The URL provided is invalid.";
+"error.location_service.fetch_failed" = "Failed to fetch locations.";
+"error.location_service.decoding_failed" = "Failed to decode the locations.";
+"error.network.unreachable" = "The network is unreachable. Please check your connection.";
+"error.network.timeout" = "The request timed out. Please try again later.";
+"error.network.invalid_response" = "Received an invalid response from the server.";

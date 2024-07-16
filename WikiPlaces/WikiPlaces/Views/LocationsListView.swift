@@ -24,7 +24,7 @@ struct LocationsListView: View {
                             .font(.title2)
                             .bold()
                         HStack {
-                            Text("Lat:")
+                            Text(NSLocalizedString("locations-list.latitude_label", comment: ""))
                                 .font(.body)
                             Text("\(location.lat)")
                                 .truncationMode(.tail)
@@ -32,7 +32,7 @@ struct LocationsListView: View {
                                 .font(.body)
                         }
                         HStack {
-                            Text("Long:")
+                            Text(NSLocalizedString("locations-list.longitude_label", comment: ""))
                                 .font(.body)
                             Text("\(location.long)")
                                 .font(.body)
@@ -46,7 +46,7 @@ struct LocationsListView: View {
             }
             .contentShape(Rectangle())
         }
-        .navigationTitle("Locations")
+        .navigationTitle(NSLocalizedString("locations-list.navigation_title", comment: ""))
         .navigationBarItems(trailing: HStack {
             Button(action: {
                 showAddLocationSheet = true
@@ -56,9 +56,9 @@ struct LocationsListView: View {
         })
         .alert(isPresented: .constant(viewModel.error != nil)) {
             Alert(
-                title: Text("Error"),
-                message: Text(viewModel.error?.localizedDescription ?? "Unknown error"),
-                dismissButton: .default(Text("OK"))
+                title: Text(NSLocalizedString("locations-list.error_title", comment: "")),
+                message: Text(viewModel.error?.localizedDescription ?? NSLocalizedString("locations-list.unknown_error", comment: "")),
+                dismissButton: .default(Text(NSLocalizedString("locations-list.ok_button", comment: "")))
             )
         }
         .background(Color(UIColor.systemGray6))

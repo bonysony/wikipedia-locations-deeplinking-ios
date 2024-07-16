@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             switch viewModel.viewStatus {
             case .initialised, .loading:
-                ProgressView("Loading...")
+                ProgressView(NSLocalizedString("loading-state.message", comment: ""))
             case .loaded:
                 LocationsListView(viewModel: viewModel)
             case .error:

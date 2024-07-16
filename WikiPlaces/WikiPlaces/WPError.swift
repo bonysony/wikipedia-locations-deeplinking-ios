@@ -17,11 +17,11 @@ struct WPError: Error, LocalizedError {
         var errorDescription: String {
             switch self {
             case .invalidNumbers:
-                return "Please enter valid numbers for latitude and longitude."
+                return NSLocalizedString("error.validation.invalid_numbers", comment: "")
             case .latitudeOutOfBounds:
-                return "Latitude must be between -90 and 90 degrees."
+                return NSLocalizedString("error.validation.latitude_out_of_bounds", comment: "")
             case .longitudeOutOfBounds:
-                return "Longitude must be between -180 and 180 degrees."
+                return NSLocalizedString("error.validation.longitude_out_of_bounds", comment: "")
             }
         }
     }
@@ -33,9 +33,9 @@ struct WPError: Error, LocalizedError {
         var errorDescription: String {
             switch self {
             case .cannotOpenURL:
-                return "Failed to open URL. Please check the format."
+                return NSLocalizedString("error.coordinator.cannot_open_url", comment: "")
             case .unsupportedURLScheme:
-                return "This URL scheme is not supported. Please check if the Wikipedia app is installed."
+                return NSLocalizedString("error.coordinator.unsupported_url_scheme", comment: "")
             }
         }
     }
@@ -48,11 +48,11 @@ struct WPError: Error, LocalizedError {
         var errorDescription: String {
             switch self {
             case .invalidURL:
-                return "The URL provided is invalid."
-            case .fetchFailed(let error):
-                return "Failed to fetch locations. \(error.localizedDescription)"
-            case .decodingFailed(let error):
-                return "Failed to decode the locations. \(error.localizedDescription)"
+                return NSLocalizedString("error.location_service.invalid_url", comment: "")
+            case .fetchFailed(_):
+                return NSLocalizedString("error.location_service.fetch_failed", comment: "")
+            case .decodingFailed(_):
+                return NSLocalizedString("error.location_service.decoding_failed", comment: "")
             }
         }
     }
@@ -65,11 +65,11 @@ struct WPError: Error, LocalizedError {
         var errorDescription: String {
             switch self {
             case .unreachable:
-                return "The network is unreachable. Please check your connection."
+                return NSLocalizedString("error.network.unreachable", comment: "")
             case .timeout:
-                return "The request timed out. Please try again later."
+                return NSLocalizedString("error.network.timeout", comment: "")
             case .invalidResponse:
-                return "Received an invalid response from the server."
+                return NSLocalizedString("error.network.invalid_response", comment: "")
             }
         }
     }
