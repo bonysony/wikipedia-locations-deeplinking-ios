@@ -20,24 +20,24 @@ struct AddCustomLocationView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("New Location")) {
-                    TextField("Name", text: $name)
-                    TextField("Latitude", text: $lat)
+                Section {
+                    TextField("Location Name", text: $name)
+                    TextField("Latitude coordinate", text: $lat)
                         .keyboardType(.decimalPad)
                         .onChange(of: lat) {
                             lat = lat.filter { "0123456789.-".contains($0) }
                         }
-                    TextField("Longitude", text: $long)
+                    TextField("Longitude coordinate", text: $long)
                         .keyboardType(.decimalPad)
                         .onChange(of: long) {
                             long = long.filter { "0123456789.-".contains($0) }
                         }
                 }
                 Button(action: addLocation) {
-                    Text("Add Location")
+                    Text("Add location")
                 }
             }
-            .navigationTitle("Add Location")
+            .navigationTitle("Add a location")
             .navigationBarItems(leading: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
             })
