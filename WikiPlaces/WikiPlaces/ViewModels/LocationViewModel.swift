@@ -7,12 +7,16 @@
 import Foundation
 import SwiftUI
 
+// MARK: - ViewStatus
+
 enum ViewStatus {
     case initialised
     case loading
     case loaded
     case error
 }
+
+// MARK: - LocationViewModel
 
 class LocationViewModel: ObservableObject {
     @Published var locations: [Location] = []

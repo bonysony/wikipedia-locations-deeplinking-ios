@@ -8,7 +8,6 @@
 import Foundation
 
 struct WPError: Error, LocalizedError {
-    
     enum ValidationError: Error, LocalizedError {
         case invalidNumbers
         case latitudeOutOfBounds
@@ -49,9 +48,9 @@ struct WPError: Error, LocalizedError {
             switch self {
             case .invalidURL:
                 return NSLocalizedString("error.location_service.invalid_url", comment: "")
-            case .fetchFailed(_):
+            case .fetchFailed:
                 return NSLocalizedString("error.location_service.fetch_failed", comment: "")
-            case .decodingFailed(_):
+            case .decodingFailed:
                 return NSLocalizedString("error.location_service.decoding_failed", comment: "")
             }
         }

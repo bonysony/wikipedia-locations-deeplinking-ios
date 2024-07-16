@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
 import SwiftUI
+
+// MARK: - ErrorStateView
 
 struct ErrorStateView: View {
     var error: WPError.NetworkError
@@ -43,6 +44,8 @@ struct ErrorStateView: View {
         .ignoresSafeArea()
     }
 }
+
+// MARK: - ErrorStateView_Previews
 
 struct ErrorStateView_Previews: PreviewProvider {
     static var previews: some View {

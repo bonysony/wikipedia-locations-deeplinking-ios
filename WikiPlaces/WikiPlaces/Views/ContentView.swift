@@ -25,6 +25,6 @@ struct ContentView: View {
                 })
             }
         }
-        .task{await viewModel.loadLocations()}
+        .task { await viewModel.loadLocations() }
     }
 }
