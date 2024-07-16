@@ -18,7 +18,7 @@ struct ContentView: View {
             case .loaded:
                 LocationsListView(viewModel: viewModel)
             case .error:
-                ErrorStateView(errorMessage: "Failed to load locations.", retryAction: {
+                ErrorStateView(error: WPError.NetworkError.unreachable, retryAction: {
                     Task {
                         await viewModel.fetchLocations()
                     }

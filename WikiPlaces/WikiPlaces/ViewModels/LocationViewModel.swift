@@ -18,7 +18,7 @@ enum ViewStatus {
 class LocationViewModel: ObservableObject {
     @Published var locations: [Location] = []
     @Published var viewStatus: ViewStatus = .initialised
-    @Published var errorMessage: String?
+    @Published var error: Error?
 
     private let locationService: LocationServiceProtocol
     private let coordinator: Coordinator
@@ -38,7 +38,7 @@ class LocationViewModel: ObservableObject {
             locations = fetchedLocations
             viewStatus = .loaded
         } catch {
-            errorMessage = "Failed to fetch locations. Please check your network connection."
+            self.error = WPError.LocationServiceError.fetchFailed(error)
             viewStatus = .error
         }
     }
@@ -55,7 +55,7 @@ class LocationViewModel: ObservableObject {
                 try await coordinator.openURL(url)
             }
         } catch {
-            errorMessage = "Could not open uRL"
+            self.error = WPError.CoordinatorError.cannotOpenURL
             viewStatus = .error
         }
         

@@ -54,10 +54,10 @@ struct LocationsListView: View {
                     Image(systemName: "plus.circle.fill")
                 }
             })
-            .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
+            .alert(isPresented: .constant(viewModel.error != nil)) {
                 Alert(
                     title: Text("Error"),
-                    message: Text(viewModel.errorMessage ?? "Unknown error"),
+                    message: Text(viewModel.error?.localizedDescription ?? "Unknown error"),
                     dismissButton: .default(Text("OK"))
                 )
             }

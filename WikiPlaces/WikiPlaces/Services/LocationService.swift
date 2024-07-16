@@ -13,7 +13,7 @@ protocol LocationServiceProtocol {
 class LocationService: LocationServiceProtocol {
     func fetchLocations() async throws -> [Location] {
         guard let url = URL(string: "https://raw.githubusercontent.com/abnamrocoesd/assignment-ios/main/locations.json") else {
-            throw URLError(.badURL)
+            throw WPError.LocationServiceError.invalidURL
         }
 
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -28,8 +28,8 @@ class LocationService: LocationServiceProtocol {
             let locationResponse = try decoder.decode(LocationResponse.self, from: data)
             return locationResponse.locations
         } catch {
-            print("Decoding error: \(error)")
-            throw error
+//            print("Decoding error: \(error)")
+            throw WPError.LocationServiceError.decodingFailed(error)
         }
     }
 }

@@ -13,20 +13,6 @@ protocol Coordinator {
     func createURL(from location: Location) -> URL?
 }
 
-enum CoordinatorError: Error {
-    case cannotOpenURL
-    case unsupportedURLScheme
-
-    var description: String {
-        switch self {
-        case .cannotOpenURL:
-            return "Failed to open URL. Please check the format."
-        case .unsupportedURLScheme:
-            return "This URL scheme is not supported. Please check if the Wikipedia app is installed."
-        }
-    }
-}
-
 class AppCoordinator: Coordinator, ObservableObject {
     
     @MainActor
@@ -36,7 +22,7 @@ class AppCoordinator: Coordinator, ObservableObject {
         if UIApplication.shared.canOpenURL(url) {
             await UIApplication.shared.open(url)
         } else {
-            throw CoordinatorError.unsupportedURLScheme
+            throw WPError.CoordinatorError.unsupportedURLScheme
         }
     }
 
