@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F1028DD92C45C993000BC4F1 /* WPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1028DD82C45C993000BC4F1 /* WPError.swift */; };
 		F1028DDD2C460548000BC4F1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1028DDC2C460548000BC4F1 /* Localizable.strings */; };
+		F1028DE22C461498000BC4F1 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1028DE12C461498000BC4F1 /* MockURLProtocol.swift */; };
 		F1890B7D2C42A8EE005DBBA3 /* WikiPlacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890B7C2C42A8EE005DBBA3 /* WikiPlacesApp.swift */; };
 		F1890B7F2C42A8EE005DBBA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1890B7E2C42A8EE005DBBA3 /* ContentView.swift */; };
 		F1890B812C42A8F1005DBBA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1890B802C42A8F1005DBBA3 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		F1028DD82C45C993000BC4F1 /* WPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPError.swift; sourceTree = "<group>"; };
 		F1028DDC2C460548000BC4F1 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F1028DE12C461498000BC4F1 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		F1890B792C42A8EE005DBBA3 /* WikiPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1890B7C2C42A8EE005DBBA3 /* WikiPlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPlacesApp.swift; sourceTree = "<group>"; };
 		F1890B7E2C42A8EE005DBBA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				F1890B832C42A8F1005DBBA3 /* Preview Content */,
 				F1028DD82C45C993000BC4F1 /* WPError.swift */,
 				F1028DDC2C460548000BC4F1 /* Localizable.strings */,
+				F1028DE12C461498000BC4F1 /* MockURLProtocol.swift */,
 			);
 			path = WikiPlaces;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			files = (
 				F1890B7F2C42A8EE005DBBA3 /* ContentView.swift in Sources */,
 				F1890BA82C42AA1E005DBBA3 /* Location.swift in Sources */,
+				F1028DE22C461498000BC4F1 /* MockURLProtocol.swift in Sources */,
 				F1890BAE2C42C0CC005DBBA3 /* LocationService.swift in Sources */,
 				F1890BBC2C457C08005DBBA3 /* LocationsListView.swift in Sources */,
 				F1890B7D2C42A8EE005DBBA3 /* WikiPlacesApp.swift in Sources */,
