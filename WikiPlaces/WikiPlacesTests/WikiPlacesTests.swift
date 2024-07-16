@@ -28,6 +28,7 @@ final class WikiPlacesTests: XCTestCase {
     
     // MARK: URL Creation
     
+    /// Validates that the URL constructed for deep linking into the Wikipedia app is formatted correctly based on provided location coordinates.
     func testCreateURL() {
         let coordinator = AppCoordinator()
         let location = Location(name: "String", lat: 37.7749, long: -122.4194)
@@ -37,6 +38,7 @@ final class WikiPlacesTests: XCTestCase {
     
     // MARK: Custom Location Input Validation
     
+    /// Ensures that the application correctly adds and recognizes custom locations within its model.
     func testAddCustomLocations() async {
         var location = Location(name: "String", lat: 37.7749, long: -122.4194)
         
@@ -96,6 +98,7 @@ final class WikiPlacesTests: XCTestCase {
 
     // MARK: Location Service
     
+    /// Tests the asynchronous loading of location data from a mock service to verify that locations are correctly added to the app’s state.
     func testLoadLocations() async {
         let service = MockLocationService()
         await viewModel.loadLocations()
@@ -103,6 +106,7 @@ final class WikiPlacesTests: XCTestCase {
         XCTAssertTrue(viewModel.locations.contains(service.location))
     }
     
+    /// Verifies that the app can successfully parse and load location data from a simulated network response containing valid JSON.
     func testFetchLocationsSuccess() async {
         let expectedData = """
         {
@@ -126,6 +130,7 @@ final class WikiPlacesTests: XCTestCase {
         }
     }
     
+    /// Checks the app's ability to handle invalid JSON formats, ensuring that the error handling paths are triggered as expected.
     func testFetchLocationsInvalidJSON() async {
         let invalidJSONData = "Invalid JSON".data(using: .utf8)!
 
