@@ -58,17 +58,11 @@ struct WPError: Error, LocalizedError {
     
     enum NetworkError: Error, LocalizedError {
         case unreachable
-        case timeout
-        case invalidResponse
         
         var errorDescription: String {
             switch self {
             case .unreachable:
                 return NSLocalizedString("error.network.unreachable", comment: "")
-            case .timeout:
-                return NSLocalizedString("error.network.timeout", comment: "")
-            case .invalidResponse:
-                return NSLocalizedString("error.network.invalid_response", comment: "")
             }
         }
     }
